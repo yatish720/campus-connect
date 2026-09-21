@@ -1,1 +1,42 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Manage Opportunities | Campus Connect</title><link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/dashboard.css"></head><body><header class="dash-nav"><a class="brand" href="../index.html"><span class="brand-mark">CC</span><span><b>Campus Connect</b><small>The National College Jayanagar</small></span></a><div class="user-chip">Campus Connect <button onclick="logout()">Logout</button></div></header><div class="dash-layout"><aside class="sidebar"><a href="../admin/dashboard.html">⌂ Dashboard</a><a class="active" href="#">Manage Opportunities</a></aside><main class="dashboard-main"><span class="eyebrow">ADMINISTRATION</span><h1>Manage Opportunities</h1><p style="color:#8195aa">This module is part of the Campus Connect Stage 1 presentation build. Firebase functionality will be connected in the next stage.</p><div class="dash-section"><div class="dash-cards"><article><h3>Demo module ready</h3><p>The UI foundation is complete. Next we will connect real data, authentication and admin controls using Firebase.</p></article><article><h3>College</h3><p>The National College Jayanagar</p></article></div></div></main></div><script src="../js/auth.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Manage Opportunities | Campus Connect</title>
+<link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/dashboard.css">
+<style>
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.panel{padding:22px;border:1px solid #1b3852;background:#0a1929;border-radius:14px;margin-top:25px}label{display:block;color:#aabbd0;font-size:12px;margin-bottom:13px}input,select,textarea{width:100%;margin-top:7px;padding:12px;background:#071422;border:1px solid #26425e;border-radius:9px;color:#fff}textarea{min-height:90px;resize:vertical}.full{grid-column:1/-1}.op-list{margin-top:25px}.op-item{display:flex;justify-content:space-between;gap:20px;padding:18px;border:1px solid #1b3852;background:#0a1929;border-radius:12px;margin-bottom:10px}.muted{color:#8094aa;font-size:12px}@media(max-width:700px){.form-grid{grid-template-columns:1fr}.full{grid-column:auto}.op-item{flex-direction:column}}
+</style></head>
+<body data-role="admin">
+<header class="dash-nav"><a class="brand" href="../index.html"><span class="brand-mark">CC</span><span><b>Campus Connect</b><small>The National College Jayanagar</small></span></a><div class="user-chip"><span data-user-id>ADMIN001</span> <button onclick="logout()">Logout</button></div></header>
+<div class="dash-layout"><aside class="sidebar admin-sidebar">
+<a href="dashboard.html">⌂ Dashboard</a><a class="active" href="opportunities.html">◎ Manage Opportunities</a><a href="students.html">♙ Students</a><a href="applications.html">✓ Applications</a><a href="certificates.html">▣ Certificates</a><a href="announcements.html">📢 Announcements</a>
+</aside>
+<main class="dashboard-main">
+<span class="eyebrow">ADMINISTRATION</span><h1>Manage Opportunities</h1><p style="color:#8195aa">Create opportunities here. They are saved in this browser for the Stage 1 demonstration.</p>
+<div class="panel"><h2>Add Opportunity</h2>
+<form id="opForm" class="form-grid">
+<label>Title<input id="title" required placeholder="AI & Web Development Internship"></label>
+<label>Type<select id="type"><option>Internship</option><option>Hackathon</option><option>Workshop</option><option>Competition</option><option>Certificate</option></select></label>
+<label>Organization<input id="org" required placeholder="Company / Institution"></label>
+<label>Date<input id="date" type="date"></label>
+<label>Location<input id="location" placeholder="Bengaluru / Online"></label>
+<label>Deadline<input id="deadline" type="date"></label>
+<label class="full">Description<textarea id="description" placeholder="Describe the opportunity"></textarea></label>
+<div class="full"><button class="btn btn-primary" type="submit">Publish Opportunity</button></div>
+</form></div>
+<div class="op-list"><h2>Published Opportunities</h2><div id="opList"></div></div>
+</main></div>
+<script src="../js/auth.js"></script>
+<script>
+if (typeof requireRole === "function") requireRole("admin");
+const KEY="campusConnectOpportunities";
+const demo=[
+ {title:"National Innovation Hackathon 2026",type:"Hackathon",org:"The National College Jayanagar",date:"2026-10-18",location:"Online",deadline:"2026-10-10",description:"Build solutions for real-world problems."},
+ {title:"AI & Web Development Internship",type:"Internship",org:"Campus Industry Partner",date:"2026-11-01",location:"Bengaluru",deadline:"2026-10-20",description:"8-week industry-oriented internship."}
+];
+function getOps(){let x=JSON.parse(localStorage.getItem(KEY)||"null");if(!x){x=demo;localStorage.setItem(KEY,JSON.stringify(x))}return x}
+function render(){const list=document.getElementById("opList");const ops=getOps();list.innerHTML=ops.length?ops.map((o,i)=>`<div class="op-item"><div><b>${o.title}</b><div class="muted">${o.type} • ${o.org} • ${o.location||"—"}</div><div class="muted">${o.description||""}</div></div><button class="btn" onclick="removeOp(${i})">Delete</button></div>`).join(""):"<p class='muted'>No opportunities yet.</p>"}
+function removeOp(i){if(confirm("Delete this opportunity?")){let x=getOps();x.splice(i,1);localStorage.setItem(KEY,JSON.stringify(x));render()}}
+document.getElementById("opForm").addEventListener("submit",e=>{e.preventDefault();const op={title:title.value,type:type.value,org:org.value,date:date.value,location:location.value,deadline:deadline.value,description:description.value};const x=getOps();x.unshift(op);localStorage.setItem(KEY,JSON.stringify(x));e.target.reset();render();alert("Opportunity published successfully.")});
+render();
+</script></body></html>
