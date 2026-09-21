@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Student Login | Campus Connect</title><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/auth.css"></head>
+<body class="auth-page">
+<div class="auth-shell">
+  <a href="index.html" class="back">← Back to Campus Connect</a>
+  <div class="auth-box">
+    <div class="auth-logo">CC</div>
+    <span class="eyebrow">STUDENT PORTAL</span>
+    <h1>Welcome back</h1>
+    <p>Sign in using your permanent college ID.</p>
+    <form id="studentLogin">
+      <label>College ID<input id="studentId" type="text" placeholder="NCJ2026001" required></label>
+      <label>Password<input id="studentPassword" type="password" placeholder="Enter password" required></label>
+      <button class="btn btn-primary btn-full" type="submit">Sign In</button>
+      <p id="loginMessage" class="form-message"></p>
+    </form>
+    <div class="demo-box"><b>Presentation Demo</b><br>College ID: <code>NCJ2026001</code><br>Password: <code>student123</code></div>
+    <a href="admin-login.html" class="switch-link">Admin? Go to Admin Login →</a>
+  </div>
+</div>
+<script src="js/auth.js"></script></body></html>

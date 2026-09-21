@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Admin Login | Campus Connect</title><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/auth.css"></head>
+<body class="auth-page">
+<div class="auth-shell">
+  <a href="index.html" class="back">← Back to Campus Connect</a>
+  <div class="auth-box admin-auth">
+    <div class="auth-logo admin-mark">AD</div>
+    <span class="eyebrow">ADMINISTRATION</span>
+    <h1>Admin Portal</h1>
+    <p>Manage students, opportunities, applications and certificates.</p>
+    <form id="adminLogin">
+      <label>Admin ID<input id="adminId" type="text" placeholder="ADMIN001" required></label>
+      <label>Password<input id="adminPassword" type="password" placeholder="Enter password" required></label>
+      <button class="btn btn-primary btn-full" type="submit">Enter Admin Panel</button>
+      <p id="adminMessage" class="form-message"></p>
+    </form>
+    <div class="demo-box"><b>Presentation Demo</b><br>Admin ID: <code>ADMIN001</code><br>Password: <code>admin123</code></div>
+  </div>
+</div>
+<script src="js/auth.js"></script></body></html>
