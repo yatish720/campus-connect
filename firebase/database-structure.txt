@@ -1,1 +1,51 @@
+CAMPUS CONNECT FIRESTORE STRUCTURE
 
+users/{uid}
+  collegeId
+  name
+  email
+  role: "student" | "admin"
+  department
+  semester
+  accountStatus: "pending" | "active" | "blocked"
+  createdAt
+
+opportunities/{opportunityId}
+  title
+  type: "Internship" | "Hackathon" | "Workshop" | "Competition" | "Certificate"
+  organization
+  description
+  eligibility
+  date
+  deadline
+  location
+  registrationLink
+  status: "published" | "draft" | "closed"
+  createdBy
+  createdAt
+
+applications/{applicationId}
+  studentUid
+  opportunityId
+  opportunityTitle
+  studentCollegeId
+  status: "pending" | "approved" | "rejected"
+  appliedAt
+  reviewedAt
+  reviewedBy
+
+certificates/{certificateId}
+  studentUid
+  title
+  issuer
+  certificateNumber
+  issueDate
+  fileUrl
+  createdAt
+
+announcements/{announcementId}
+  title
+  message
+  date
+  createdBy
+  status
