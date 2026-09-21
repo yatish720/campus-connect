@@ -1,1 +1,14 @@
-
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Admin Dashboard | Campus Connect</title><link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/dashboard.css"></head>
+<body>
+<header class="dash-nav"><a class="brand" href="../index.html"><span class="brand-mark">CC</span><span><b>Campus Connect</b><small>The National College Jayanagar</small></span></a><div class="user-chip">ADMIN001 <button onclick="logout()">Logout</button></div></header>
+<div class="dash-layout">
+<aside class="sidebar admin-sidebar"><a class="active" href="dashboard.html">⌂ Dashboard</a><a href="opportunities.html">◎ Manage Opportunities</a><a href="students.html">♙ Students</a><a href="applications.html">✓ Applications</a><a href="certificates.html">▣ Certificates</a><a href="announcements.html">📢 Announcements</a></aside>
+<main class="dashboard-main">
+<div class="welcome"><div><span class="eyebrow">ADMINISTRATION</span><h1>College Admin Dashboard</h1><p>Manage Campus Connect for The National College Jayanagar.</p></div><a href="opportunities.html" class="btn btn-primary">+ Add Opportunity</a></div>
+<div class="dashboard-stats"><div><span>Total Students</span><strong>528</strong></div><div><span>Active Opportunities</span><strong>24</strong></div><div><span>Pending Applications</span><strong>17</strong></div><div><span>Certificates Issued</span><strong>146</strong></div></div>
+<section class="dash-section"><div class="section-title"><h2>Administration actions</h2></div>
+<div class="admin-grid"><a href="opportunities.html"><b>◎ Manage Opportunities</b><span>Create and publish programs</span></a><a href="students.html"><b>♙ Manage Students</b><span>Approve and activate student accounts</span></a><a href="applications.html"><b>✓ Review Applications</b><span>Approve or reject applications</span></a><a href="certificates.html"><b>▣ Certificates</b><span>Manage student certificates</span></a></div></section>
+<section class="dash-section"><div class="section-title"><h2>Recent activity</h2></div><div class="activity"><p><b>NCJ2026034</b> applied for AI & Web Development Internship <span>2 min ago</span></p><p><b>NCJ2026018</b> completed Cloud Computing Workshop <span>18 min ago</span></p><p><b>NCJ2026091</b> requested student account approval <span>1 hr ago</span></p></div></section>
+</main></div><script src="../js/auth.js"></script></body></html>
